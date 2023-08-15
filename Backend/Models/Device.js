@@ -1,9 +1,11 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const mongoose= require("mongoose")
 
-const Device= new Schema({
+const DeviceSchema= new mongoose.Schema({
   id: Number,
   name: String,
-  DateOfCreation: Date,
+  DateOfCreation: String,
   userId: {type:mongoose.Types.ObjectId,ref:"user"}
 });
+
+const device = mongoose.model("device", DeviceSchema)
+module.exports= device;

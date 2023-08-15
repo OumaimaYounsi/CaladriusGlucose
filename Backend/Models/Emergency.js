@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+const mongoose= require("mongoose")
 const { Schema } = mongoose;
 
-const Emergency= new Schema({
+const EmergencySchema= new Schema({
   id: Number,
   typeOfEmergency: String,
   DateOfSent: Date,
@@ -9,5 +9,9 @@ const Emergency= new Schema({
     langetude: String,
     latitude: String
   },
+  state: String,
   userId: {type:mongoose.Types.ObjectId,ref:"user"}
 });
+
+const emergency = mongoose.model("emergency", EmergencySchema)
+module.exports= emergency;
