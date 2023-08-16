@@ -314,7 +314,7 @@
     .navbar-toggler:not(:disabled):not(.disabled) {
         display: block;
     }
-    .bg-light { background-color: #ffffff !important;}
+    .bg-light1 { background-color: #ffffff !important;}
 #main{
     display: none;
 }
@@ -472,7 +472,7 @@ height: 110%;
     .navbar-toggler:not(:disabled):not(.disabled) {
         display: block;
     }
-    .bg-light { background-color: #ffffff !important;}
+    .bg-light1 { background-color: #ffffff !important;}
 .navbar-light .navbar-toggler-icon {
     background-image:url(../images/toggle-icon1.png); 
     width: 40px;

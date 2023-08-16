@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { FrontLayoutComponent } from './front-layout/front-layout.component';
 import { RouterModule } from '@angular/router';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 
 
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
-    FrontLayoutComponent
+    FrontLayoutComponent,
+    AuthLayoutComponent
   ],
   imports: [
     CommonModule,
