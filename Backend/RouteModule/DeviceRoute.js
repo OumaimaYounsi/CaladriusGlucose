@@ -1,4 +1,6 @@
 const express = require("express")
+const {midelware}= require('../Middlewares/middelware')
+
 
 // use the function Router(HTTP) of express
 const route = new express.Router()
@@ -8,15 +10,15 @@ const {addDevice, getDevices, deleteDevice, getDeviceById, updateDevice}= requir
 // put: to post
 
 //route.get('/get', getAllDevices )
-route.get('/', getDevices)
-route.get('/:id', getDeviceById)
+route.get('/',midelware, getDevices)
+route.get('/:id',midelware, getDeviceById)
 // route.get('/:userId' ,authMiddelware, getDevicesByUserId)
 
-route.put('/add', addDevice)
+route.put('/add', midelware,addDevice)
 
-route.post('/:id', updateDevice)
+route.post('/:id', midelware,updateDevice)
 
-route.delete('/:id', deleteDevice)
+route.delete('/:id', midelware,deleteDevice)
 
 
 module.exports= route

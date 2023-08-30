@@ -246,9 +246,12 @@ button {
     z-index: 9;
 }
 
-.logo {
+  .logo{
     width: 35%;
     float: left;
+}
+.imglogo{
+    max-width: 20% !important ;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {

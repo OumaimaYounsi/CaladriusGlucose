@@ -2,6 +2,10 @@ const express= require('express')
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require("dotenv").config()
+const cookieParser = require("cookie-parser")
+const {checkUser}= require('./Middlewares/middelware')
+
+
 
 const PORT = process.env.Port
 const URL= process.env.CONNECTIONSTRING
@@ -12,8 +16,10 @@ const device= require('./RouteModule/DeviceRoute')
 const emergency = require('./RouteModule/EmergencyRoute')
 
 app.use(express.json());
+app.use(cookieParser());
 //routes
-app.use('/user',user)
+app.get('*', checkUser) // veryfy user every rout
+app.use('/',user)
 app.use('/device', device)
 app.use('/emergency', emergency)
 
