@@ -19,7 +19,9 @@ const routes: Routes = [
     {path:'userliste', loadChildren:()=>import('./views/admin/user-liste/user-liste.module').then(m=>m.UserListeModule)},
     {path:'profil', loadChildren:()=>import('./views/admin/profile/profile.module').then(m=>m.ProfileModule)},
     {path:'adddecice', loadChildren:()=>import('./views/admin/add-device/add-device.module').then(m=>m.AddDeviceModule)},
-    {path:'prodacts', loadChildren:()=>import('./views/admin/prodacts/prodacts.module').then(m=>m.ProdactsModule)} 
+    {path:'prodacts', loadChildren:()=>import('./views/admin/prodacts/prodacts.module').then(m=>m.ProdactsModule)},
+    {path:'conseil', loadChildren:()=>import('./views/admin/conseil/conseil.module').then(m=>m.ConseilModule)},
+    {path:'addconseil', loadChildren:()=>import('./views/admin/addconseil/addconseil.module').then(m=>m.AddconseilModule)}
 
   ]},
   {path:'login', component:AuthLayoutComponent, children:[
