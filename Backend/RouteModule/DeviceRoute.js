@@ -11,14 +11,14 @@ const {addDevice, getDevices, deleteDevice, getDeviceById, updateDevice}= requir
 
 //route.get('/get', getAllDevices )
 route.get('/', getDevices)
-route.get('/:id',midelware, getDeviceById)
+route.get('/:id', getDeviceById)
 // route.get('/:userId' ,authMiddelware, getDevicesByUserId)
 
-route.put('/add', midelware,addDevice)
+route.put('/add',addDevice)
 
-route.post('/:id', midelware,updateDevice)
+route.post('/:id',updateDevice)
 
-route.delete('/:id', midelware,deleteDevice)
+route.delete('/:id',deleteDevice)
 
 
 module.exports= route

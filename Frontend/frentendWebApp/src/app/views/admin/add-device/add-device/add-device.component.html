@@ -4,7 +4,7 @@
     <div class="row">
       <div class="mb-3 col-md-6">
         <label  class="form-label">Device Code</label>
-        <input class="form-control" type="text" name="Device code" required ngModel #code="ngModel" minlength="7" maxlength="7" pattern="^\d{2}[A-Za-z]{3}\d{2}$"/>
+        <input class="form-control" type="text" name="Device code" required ngModel #code="ngModel" minlength="7" maxlength="7" pattern="^\d{2}[A-Za-z]{3}\d{2}$" [(ngModel)]="newDevice.deviceCode"/>
           <div style="margin: 0; color: darkred;" *ngIf="code.invalid && (code.dirty || code.touched)">
             <div *ngIf="code.errors?.['required']">Device Code is required.</div>
             <div *ngIf="code.errors?.['minlength']">
@@ -21,14 +21,14 @@
      
       <div class="mb-3 col-md-6">
         <label class="form-label">Device Name</label>
-        <input class="form-control" type="text" name="DeviceName" required ngModel #deviceName="ngModel"/>
+        <input class="form-control" type="text" name="DeviceName" required ngModel #deviceName="ngModel" [(ngModel)]="newDevice.name"/>
         <div  *ngIf="deviceName.invalid && deviceName.touched">
           <p  style="margin: 0; color: darkred;">Please inter a name for the device</p>                   
       </div>
       </div>
       <div class="mb-3 col-md-6">
         <label  class="form-label">Date of creation</label>
-        <input type="date" class="form-control" name="date_creation" placeholder="date_creation" ngModel required #date_creation="ngModel" [max]="maxDate" [min]="minDate"/>
+        <input type="date" class="form-control" name="date_creation" placeholder="date_creation" ngModel required #date_creation="ngModel" [max]="maxDate" [min]="minDate" [(ngModel)]="newDevice.DateOfCreation"/>
         <div *ngIf="date_creation.invalid && date_creation.touched">
           <div style="margin: 0; color: darkred;" *ngIf="date_creation.errors?.['required']" >Date of creation is required.</div>
           <div style="margin: 0; color: darkred;" *ngIf="date_creation.errors?.['max']" >Date is too late. It cannot be greater than today.</div>
@@ -36,7 +36,7 @@
       </div>
       <div class="mb-3 col-md-6">
         <label class="form-label" for="country">Modele</label>
-        <select id="country" class="select2 form-select" name="model" ngModel required #model="ngModel">
+        <select id="country" class="select2 form-select" name="model" ngModel required #model="ngModel" [(ngModel)]="newDevice.model">
           <option value="">Select a modele</option>
           <option value="Australia">Australia</option>
         </select>
@@ -46,7 +46,7 @@
       </div>
     
     <div class="mt-2">
-      <button type="submit" class="btn btn-primary me-2">Save changes</button>
+      <button type="submit" class="btn btn-primary me-2" (click)="add()">Save changes</button>
       <button type="reset" class="btn btn-outline-secondary">Cancel</button>
     </div>
     </div>

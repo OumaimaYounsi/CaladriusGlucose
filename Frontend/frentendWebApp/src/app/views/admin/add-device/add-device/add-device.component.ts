@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core'; // Import OnInit
 import { Devcie } from 'src/app/models/device.model';
+import { DeviceService } from 'src/app/services/device.service';
 @Component({
   selector: 'app-add-device',
   templateUrl: './add-device.component.html',
@@ -18,8 +19,7 @@ export class AddDeviceComponent implements OnInit { // Implement OnInit
   FinalMonth : any;
   FinalDay : any;
 
-  constructor() {   
-  }
+  constructor(private DeviceService: DeviceService){}
 
   ngOnInit(): void { // Correct method name to 'ngOnInit'
     this.newDevice = new Devcie();
@@ -38,6 +38,12 @@ export class AddDeviceComponent implements OnInit { // Implement OnInit
       this.TodayDate = this.currentYear + "-" + this.FinalMonth + "-" + this.FinalDay;
       console.log(this.TodayDate) ; 
       this.maxDate = this.TodayDate;
+
+      
   }
+  add(){
+    this.DeviceService.addDevice(this.newDevice).subscribe();
+  }
+  
 }
   

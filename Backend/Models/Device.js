@@ -3,7 +3,8 @@ const mongoose= require("mongoose")
 const DeviceSchema= new mongoose.Schema({
   id: Number,
   name: String,
-  DateOfCreation: String,
+  dateOfCreation: String,
+  model: String,
   userId: {type:mongoose.Types.ObjectId,ref:"user"}
 });
 

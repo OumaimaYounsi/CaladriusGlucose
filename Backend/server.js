@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require("dotenv").config()
 const cookieParser = require("cookie-parser")
 const {checkUser}= require('./Middlewares/middelware')
+const cors = require('cors');
 
 
 
@@ -17,6 +18,7 @@ const emergency = require('./RouteModule/EmergencyRoute')
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors()) //Allow requests from all origins (for development)
 //routes
 // app.get('*', checkUser) // veryfy user every rout
 app.use('/',user)
