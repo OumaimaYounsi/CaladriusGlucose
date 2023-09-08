@@ -40,7 +40,7 @@ UserSchema.pre('save', async function (next){
   next();
 });
 // static metode login
-UserSchema.statics.loginUser =async function (email, passowrd){
+UserSchema.statics.loginUser = async function (email, passowrd){
   const user = await this.findOne({email});
 
   if (user){

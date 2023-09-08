@@ -1,0 +1,37 @@
+
+<div class="card-body">
+  <form #modelCreation="ngForm">
+    <div class="row">
+      <div class="mb-3 col-md-6">
+        <label  class="form-label">Model Code</label>
+        <input class="form-control" type="text" name="Device code" required ngModel #code="ngModel" minlength="7" maxlength="7" pattern="^\d{2}[A-Za-z]{3}\d{2}$"/>
+          <div style="margin: 0; color: darkred;" *ngIf="code.invalid && (code.dirty || code.touched)">
+            <div *ngIf="code.errors?.['required']">Device Code is required.</div>
+            <div *ngIf="code.errors?.['minlength']">
+              Device Code must be at least 7 characters long.
+            </div>
+            <div *ngIf="code.errors?.['maxlength']">
+              Device Code cannot be more than 7 characters long.
+            </div>
+            <div *ngIf="code.errors?.['pattern']">
+              Device Code must match the pattern: 2 digits, 3 letters, and 2 digits.
+            </div>
+          </div>
+        </div>
+     
+      <div class="mb-3 col-md-6">
+        <label class="form-label">Model Name</label>
+        <input class="form-control" type="text" name="DeviceName" required ngModel #deviceName="ngModel"/>
+        <div  *ngIf="deviceName.invalid && deviceName.touched">
+          <p  style="margin: 0; color: darkred;">Please inter a name for the model</p>                   
+      </div>
+      </div>
+      
+    
+    <div class="mt-2">
+      <button type="submit" class="btn btn-primary me-2">Save changes</button>
+      <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+    </div>
+    </div>
+  </form>
+</div>

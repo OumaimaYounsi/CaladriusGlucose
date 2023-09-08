@@ -10,7 +10,7 @@ const {addDevice, getDevices, deleteDevice, getDeviceById, updateDevice}= requir
 // put: to post
 
 //route.get('/get', getAllDevices )
-route.get('/',midelware, getDevices)
+route.get('/', getDevices)
 route.get('/:id',midelware, getDeviceById)
 // route.get('/:userId' ,authMiddelware, getDevicesByUserId)
 

@@ -10,84 +10,65 @@
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" class="form-control form-control-user" placeholder="First Name" required name="firstName" ngModel #firstname="ngModel">
+                        <div  *ngIf="firstname.invalid && firstname.touched">
+                            <p  style="margin: 0; color: darkred;">Please inter your first name</p>                   
+                        </div>
                     </div>
                     
                     <div class="col-sm-6">
                         <input type="text" class="form-control form-control-user" placeholder="Last Name" name="lastName" ngModel required #lastname="ngModel">
+                        <div  *ngIf="lastname.invalid && lastname.touched">
+                            <p style="margin: 0; color: darkred;">Please inter your last name</p>                 
+                         </div>
                     </div>
-                    
                 </div>
-                <div class=" row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                    <div  *ngIf="firstname.invalid && firstname.touched">
-                        <p  style="margin: 0; color: darkred;">Please inter your first name</p>                   
-                    </div>
-                    </div>
-                    <div class="col-sm-6">
-                    <div  *ngIf="lastname.invalid && lastname.touched">
-                        <p style="margin: 0; color: darkred;">Please inter your last name</p>                 
-                     </div>
-                </div>
-                </div>
+
                 <div class="form-group">
                     <input type="email" class="form-control form-control-user" placeholder="Email Address" name="email" ngModel required #email="ngModel" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+">
+                    <div *ngIf="email.invalid && email.touched">
+                        <p style="margin: 0; color: darkred;"*ngIf="email.errors?.['required']">Please inter an email</p>
+                        <p style="margin: 0; color: darkred;"*ngIf="email.errors?.['pattern']">Invalid email format</p>      
+                     </div>
                 </div>
-                <div *ngIf="email.invalid && email.touched">
-                    <p style="margin: 0; color: darkred;"*ngIf="email.errors?.['required']">Please inter an email</p>
-                    <p style="margin: 0; color: darkred;"*ngIf="email.errors?.['pattern']">Invalid email format</p>      
-                 </div>
+                
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="password" class="form-control form-control-user" placeholder="Password" name="password" ngModel required #password="ngModel" minlength="8">
+                        <div   *ngIf="password.invalid && password.touched">
+                            <p style="margin: 0; color: darkred;"*ngIf="password.errors?.['minlength']">The password is short (min 8 caracters)</p>
+                            <p style="margin: 0; color: darkred;"*ngIf="password.errors?.['required']">The password is required</p>
+                        </div>
                     </div>
                     
                      <div class="col-sm-6">
                         <input type="password" class="form-control form-control-user" placeholder="Repeat Password" name="rePasword"  required ngModel required #repassword="ngModel" pattern="{{addUserForm.value.password}}">
+                        <div  style="margin: 0; color: darkred;" *ngIf="repassword.invalid && repassword.touched">
+                            <p  *ngIf="repassword.errors?.['pattern']">Passwords do not match, please verify</p>   
+                            <p  *ngIf="repassword.errors?.['required']">Verification password is required</p>                  
+                        </div> 
                     </div> 
                     
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                    <div   *ngIf="password.invalid && password.touched">
-                        <p style="margin: 0; color: darkred;"*ngIf="password.errors?.['minlength']">The password is short (min 8 caracters)</p>
-                        <p style="margin: 0; color: darkred;"*ngIf="password.errors?.['required']">The password is required</p>
-                    </div>
-                    </div>
-                     <div class="col-sm-6">
-                    <div  style="margin: 0; color: darkred;" *ngIf="repassword.invalid && repassword.touched">
-                        <p  *ngIf="repassword.errors?.['pattern']">Passwords do not match, please verify</p>   
-                        <p  *ngIf="repassword.errors?.['required']">Verification password is required</p>                  
-                    </div> 
-                    </div>
                 </div>
                 <div class="form-group row">
                     
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input
-                              type="tel" class="form-control form-control-user" placeholder="Phone number" name="phoneNumber" ngModel required  #phone="ngModel" minlength="8" pattern="^[0-9]+$" maxlength="15" >
-                           
-                    </div>
+                            <input type="tel" class="form-control form-control-user" placeholder="Phone number" name="phoneNumber" ngModel required  #phone="ngModel" minlength="8" pattern="^[0-9]+$" maxlength="15" >
+                            <div *ngIf="phone.invalid && phone.touched">
+                                <p *ngIf="phone.errors?.['required']" style="margin: 0; color: darkred;">Phone number is required.</p>
+                                <p *ngIf="phone.errors?.['minlength']" style="margin: 0; color: darkred;">Phone number should be at least 8 digits long.</p>
+                                <p *ngIf="phone.errors?.['pattern']" style="margin: 0; color: darkred;">Please enter a valid phone number with only numeric characters.</p>
+                                <p *ngIf="phone.errors?.['maxlength']" style="margin: 0; color: darkred;">Phone number is too long (maximum 15 digits).</p>
+                              </div>
+                         </div>
                    
                     <div class="col-sm-6">
                         <input type="date" class="form-control form-control-user" placeholder="Birth Date" name="dateBirth" ngModel required #dateBirth="ngModel"> 
-                    </div>
-                    
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div *ngIf="phone.invalid && phone.touched">
-                          <p *ngIf="phone.errors?.['required']" style="margin: 0; color: darkred;">Phone number is required.</p>
-                          <p *ngIf="phone.errors?.['minlength']" style="margin: 0; color: darkred;">Phone number should be at least 8 digits long.</p>
-                          <p *ngIf="phone.errors?.['pattern']" style="margin: 0; color: darkred;">Please enter a valid phone number with only numeric characters.</p>
-                          <p *ngIf="phone.errors?.['maxlength']" style="margin: 0; color: darkred;">Phone number is too long (maximum 15 digits).</p>
+                        <div   *ngIf="dateBirth.invalid && dateBirth.touched">
+                            <p style="margin: 0; color: darkred;">The birthdate is required  </p>                  
                         </div>
-                      </div>
-                    <div class="col-sm-6">
-                    <div   *ngIf="dateBirth.invalid && dateBirth.touched">
-                        <p style="margin: 0; color: darkred;">The birthdate is required  </p>                  
-                    </div>
+                    </div> 
                 </div>
-                </div>
+ 
                 <!-- <div class="form-group">
                     <input type="text" class="form-control form-control-user" placeholder="Adress" name="adress" ngModel required #adress="ngModel">
                 </div>

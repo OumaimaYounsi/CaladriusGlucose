@@ -18,7 +18,7 @@ const emergency = require('./RouteModule/EmergencyRoute')
 app.use(express.json());
 app.use(cookieParser());
 //routes
-app.get('*', checkUser) // veryfy user every rout
+// app.get('*', checkUser) // veryfy user every rout
 app.use('/',user)
 app.use('/device', device)
 app.use('/emergency', emergency)

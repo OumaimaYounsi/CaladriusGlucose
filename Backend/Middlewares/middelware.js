@@ -38,7 +38,6 @@ const checkUser = (req, res, next)=>{
           next();
       }else{
           console.log(detectedToken);
-          console.log("test")
           let user = await User.findById(detectedToken.id);
           res.locals.user = user;
           next();

@@ -1,70 +1,48 @@
 <hr class="my-0" />
 <div class="card-body">
-  <form>
+  <form #deviceCreation="ngForm">
     <div class="row">
       <div class="mb-3 col-md-6">
         <label  class="form-label">Device Code</label>
-        <input
-          class="form-control"
-          type="text"
-          
-          name="firstName"
-          
-          autofocus
-        />
-      </div>
+        <input class="form-control" type="text" name="Device code" required ngModel #code="ngModel" minlength="7" maxlength="7" pattern="^\d{2}[A-Za-z]{3}\d{2}$"/>
+          <div style="margin: 0; color: darkred;" *ngIf="code.invalid && (code.dirty || code.touched)">
+            <div *ngIf="code.errors?.['required']">Device Code is required.</div>
+            <div *ngIf="code.errors?.['minlength']">
+              Device Code must be at least 7 characters long.
+            </div>
+            <div *ngIf="code.errors?.['maxlength']">
+              Device Code cannot be more than 7 characters long.
+            </div>
+            <div *ngIf="code.errors?.['pattern']">
+              Device Code must match the pattern: 2 digits, 3 letters, and 2 digits.
+            </div>
+          </div>
+        </div>
+     
       <div class="mb-3 col-md-6">
         <label class="form-label">Device Name</label>
-        <input class="form-control" type="text" name="DeviceName" />
+        <input class="form-control" type="text" name="DeviceName" required ngModel #deviceName="ngModel"/>
+        <div  *ngIf="deviceName.invalid && deviceName.touched">
+          <p  style="margin: 0; color: darkred;">Please inter a name for the device</p>                   
+      </div>
       </div>
       <div class="mb-3 col-md-6">
-        <label for="address" class="form-label">Address</label>
-        <input type="text" class="form-control" name="address" placeholder="Address" />
-      </div>
-      <div class="mb-3 col-md-6">
-        <label for="state" class="form-label">State</label>
-        <input class="form-control" type="text" name="state" placeholder="California" />
-      </div>
-      <div class="mb-3 col-md-6">
-        <label for="zipCode" class="form-label">Zip Code</label>
-        <input
-          type="text"
-          class="form-control"
-        
-          name="zipCode"
-          placeholder="231465"
-          maxlength="6"
-        />
+        <label  class="form-label">Date of creation</label>
+        <input type="date" class="form-control" name="date_creation" placeholder="date_creation" ngModel required #date_creation="ngModel" [max]="maxDate" [min]="minDate"/>
+        <div *ngIf="date_creation.invalid && date_creation.touched">
+          <div style="margin: 0; color: darkred;" *ngIf="date_creation.errors?.['required']" >Date of creation is required.</div>
+          <div style="margin: 0; color: darkred;" *ngIf="date_creation.errors?.['max']" >Date is too late. It cannot be greater than today.</div>
+        </div>
       </div>
       <div class="mb-3 col-md-6">
         <label class="form-label" for="country">Modele</label>
-        <select id="country" class="select2 form-select">
+        <select id="country" class="select2 form-select" name="model" ngModel required #model="ngModel">
           <option value="">Select a modele</option>
           <option value="Australia">Australia</option>
-          <option value="Bangladesh">Bangladesh</option>
-          <option value="Belarus">Belarus</option>
-          <option value="Brazil">Brazil</option>
-          <option value="Canada">Canada</option>
-          <option value="China">China</option>
-          <option value="France">France</option>
-          <option value="Germany">Germany</option>
-          <option value="India">India</option>
-          <option value="Indonesia">Indonesia</option>
-          <option value="Israel">Israel</option>
-          <option value="Italy">Italy</option>
-          <option value="Japan">Japan</option>
-          <option value="Korea">Korea, Republic of</option>
-          <option value="Mexico">Mexico</option>
-          <option value="Philippines">Philippines</option>
-          <option value="Russia">Russian Federation</option>
-          <option value="South Africa">South Africa</option>
-          <option value="Thailand">Thailand</option>
-          <option value="Turkey">Turkey</option>
-          <option value="Ukraine">Ukraine</option>
-          <option value="United Arab Emirates">United Arab Emirates</option>
-          <option value="United Kingdom">United Kingdom</option>
-          <option value="United States">United States</option>
         </select>
+        <div *ngIf="model.invalid && model.touched">
+          <div style="margin: 0; color: darkred;" *ngIf="model.errors?.['required']" >Select a model</div>
+        </div>
       </div>
     
     <div class="mt-2">

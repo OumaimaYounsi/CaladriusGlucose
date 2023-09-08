@@ -21,7 +21,8 @@ const routes: Routes = [
     {path:'adddecice', loadChildren:()=>import('./views/admin/add-device/add-device.module').then(m=>m.AddDeviceModule)},
     {path:'prodacts', loadChildren:()=>import('./views/admin/prodacts/prodacts.module').then(m=>m.ProdactsModule)},
     {path:'conseil', loadChildren:()=>import('./views/admin/conseil/conseil.module').then(m=>m.ConseilModule)},
-    {path:'addconseil', loadChildren:()=>import('./views/admin/addconseil/addconseil.module').then(m=>m.AddconseilModule)}
+    {path:'addconseil', loadChildren:()=>import('./views/admin/addconseil/addconseil.module').then(m=>m.AddconseilModule)},
+    {path:'addmodel', loadChildren:()=>import('./views/admin/add-device-modele/add-device-modele.module').then(m=>m.AddDeviceModeleModule)}
 
   ]},
   {path:'login', component:AuthLayoutComponent, children:[

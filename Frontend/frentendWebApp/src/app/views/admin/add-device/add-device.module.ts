@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddDeviceRoutingModule } from './add-device-routing.module';
 import { AddDeviceComponent } from './add-device/add-device.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AddDeviceComponent } from './add-device/add-device.component';
   ],
   imports: [
     CommonModule,
-    AddDeviceRoutingModule
+    AddDeviceRoutingModule,
+    FormsModule
   ]
 })
 export class AddDeviceModule { }
