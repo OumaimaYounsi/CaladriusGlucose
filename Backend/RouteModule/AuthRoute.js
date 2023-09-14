@@ -1,5 +1,5 @@
 const express = require("express")
-const {getAllUsers, signeUp, login, deleteOneUser, updateUser, logout, resetPasssword, getOneUser} = require('../Controller/UserController')
+const {getAllUsers, signeUp, login, deleteOneUser, updateUser, logout, resetPasssword, getOneUser, signeUpAdmin} = require('../Controller/UserController')
 
 const {midelware}= require('../Middlewares/middelware')
 
@@ -16,6 +16,7 @@ route.put('/signeup', signeUp)
 route.put('/login', login)
 route.post('/resetpassword', resetPasssword)
 route.get('/logout', logout)
+route.put('/addAdmin', signeUpAdmin)
 //
 //
 route.get('/user/users',midelware, getAllUsers)

@@ -21,7 +21,7 @@ export class AddDeviceComponent implements OnInit { // Implement OnInit
 
   constructor(private DeviceService: DeviceService){}
 
-  ngOnInit(): void { // Correct method name to 'ngOnInit'
+  ngOnInit(): void { 
     this.newDevice = new Devcie();
 
     if(this.currentMonth < 10){ 

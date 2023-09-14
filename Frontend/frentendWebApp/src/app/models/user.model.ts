@@ -1,8 +1,9 @@
 export class User{
+    id: String | any;
     firstName:String | any;
     lastName:String | any;
     password:String | any;        
-    birthDate:String | any;
+    birthDate:Date | any;
     email:String | any;
     phoneNumber:String | any;
     bloodSugarLevel:Number | any;

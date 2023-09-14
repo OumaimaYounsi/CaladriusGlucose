@@ -51,6 +51,7 @@ exports.login= async(req,res)=>{
         res.status(200).json({userlog: userlog._id})
     } catch (error) {
         res.status(500).json({error: error.toString()})
+        console.log(error)
     }
 
 }
@@ -75,13 +76,47 @@ exports.signeUp= async(req, res)=>{
         role,
         status
     });
-    const register = await newuser.save()
+    newuser.role = "user";
+    const register = await newuser.save();
     const token = creatToken(register._id)
     res.cookie('jwt', token, {httpOnly: true}, {maxAge: maxAge * 1000}) // one day 
     res.status(201).json({register: register._id, token});
      
     } catch (error) {
         res.status(500).json({error: error.toString()})
+        console.log(error)
+    }
+
+}
+
+exports.signeUpAdmin= async(req, res)=>{
+    
+    try {
+        const {id, firstName, lastName, email,  password,  phoneNumber, birthDate,  gender, longitude, latitude, bloodSugarLevel, role, status} = req.body;
+    const newuser = new user({
+        id, 
+        firstName,
+        lastName,
+        email,
+        password,
+        phoneNumber,
+        birthDate, 
+        gender,
+        longitude,
+        latitude,
+        bloodSugarLevel, 
+        role,
+        status
+    });
+    newuser.role = "admin";
+    const register = await newuser.save();
+    const token = creatToken(register._id)
+    res.cookie('jwt', token, {httpOnly: true}, {maxAge: maxAge * 1000}) // one day 
+    res.status(201).json({register: register._id, token});
+     
+    } catch (error) {
+        res.status(500).json({error: error.toString()})
+        console.log(error)
     }
 
 }

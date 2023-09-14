@@ -8,7 +8,7 @@
             <form class="user" #login="ngForm">
                 <div class="form-group">
                     <input type="email" class="form-control form-control-user"  aria-describedby="emailHelp"
-                        name="email" placeholder="Enter Email Address..." ngModel required #email="ngModel" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+"> 
+                        name="email" placeholder="Enter Email Address..." ngModel required #email="ngModel" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+" [(ngModel)]="userModule.email"> 
                         <div *ngIf="email.invalid && email.touched">
                             <p style="margin: 0; color: darkred;"*ngIf="email.errors?.['required']">Please inter an email</p>
                             <p style="margin: 0; color: darkred;"*ngIf="email.errors?.['pattern']">Invalid email format</p>      
@@ -16,7 +16,7 @@
                     </div>
                 
                 <div class="form-group">
-                    <input type="password" class="form-control form-control-user" placeholder="Password" name="password" ngModel required #password="ngModel">
+                    <input type="password" class="form-control form-control-user" placeholder="Password" name="password" ngModel required #password="ngModel" [(ngModel)]="userModule.password">
                     <div   *ngIf="password.invalid && password.touched">
                         <p style="margin: 0; color: darkred;"*ngIf="password.errors?.['required']">The password is required</p>
                     </div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary btn-user btn-block" type="button" [disabled]="login.invalid">Login</button>
+                    <button class="btn btn-primary btn-user btn-block" type="button" [disabled]="login.invalid" (click)="loginUser()">Login</button>
                 </div>
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
